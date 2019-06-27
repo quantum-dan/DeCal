@@ -370,7 +370,13 @@ if(fivemin_flag == 1) {
   
   
   for(i in seq(1:num)) {
+    # Somehow n_5mins is sometimes ending up negative, which obviously doesn't work.
+    # It looks like generate_from_dist occasionally produces negative values?
+    # Should there ever legitimately be negative values?
     n_5mins <- syn.events$duration[i]/5
+    print(n_5mins)
+    # This should work if negative values are never legitimate.
+    n_5mins <- if (n_5mins > 0) n_5mins else 0
     event.tmp <- rep(NA, n_5mins)
     # IF EVEN 
     if( floor(n_5mins/2) - (n_5mins/2) ==  0){

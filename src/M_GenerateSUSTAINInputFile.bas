@@ -510,6 +510,7 @@ Sub GenerateSUSTAINInputFile()
             If Sheets("4 - Calibration Parameters").Range("T4").Value <> 2 Then
                 ReDim ks(nsims) As Double
                 Dim ks_txt As String
+                ' Here nsims is different from above.  Why?
                 For n = 1 To nsims
                     ks(n) = Sheets("4 - Calibration Parameters").Range("D10").Value + (Rnd * (Sheets("4 - Calibration Parameters").Range("G10").Value - Sheets("4 - Calibration Parameters").Range("D10").Value))
                     If n = 1 Then
