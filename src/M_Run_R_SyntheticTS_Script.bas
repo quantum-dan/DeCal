@@ -29,7 +29,7 @@ Dim path, Rdir As String
 ' Get the directory Rscript.exe is in by taking the path up to the last \
 Rdir = Left(Rscrpt_path, InStrRev(Rscrpt_path, "\"))
 'path = Rscrpt_path & " " & wd_path & "\R\output_test.R" & " " & wd_path
-path = Chr(34) + Rscrpt_path + Chr(34) + " " + Rdir + "generate_synthetic_TS.R" + " " + ReturnWorkingDir() + "\data"
+path = Chr(34) + Rscrpt_path + Chr(34) + " " + Chr(34) + Rdir + "generate_synthetic_TS.R" + Chr(34) + " " + Chr(34) + ReturnWorkingDir() + "\data" + Chr(34)
 'path = Rscrpt_path + " " + "generate_synthetic_TS.r"
 'Sheets("4 - Calibration Parameters").Range("G100").Value = path
 errorCode = shell.Run(path, style, waitTillComplete)

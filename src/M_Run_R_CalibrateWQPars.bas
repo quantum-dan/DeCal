@@ -28,7 +28,7 @@ Dim Rdir As String
 Rdir = Left(Rscrpt_path, InStrRev(Rscrpt_path, "\"))
 ' Call R function with 1 argument: the path to the "R" sub-directory
 Dim path As String
-path = Chr(34) + Rscrpt_path + Chr(34) + " " + Rdir + "find_best_WQ_pars.r" + " " + ReturnWorkingDir() + "\data"
+path = Chr(34) + Rscrpt_path + Chr(34) + " " + Chr(34) + Rdir + "find_best_WQ_pars.r" + Chr(34) + " " + Chr(34) + ReturnWorkingDir() + "\data" + Chr(34)
 errorCode = shell.Run(path, style, waitTillComplete)
 
 
