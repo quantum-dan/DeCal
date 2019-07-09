@@ -1,4 +1,5 @@
 Private Sub BMPGeomSubmit_Click()
+    WriteBmpParams
     Worksheets(ActiveSheet.Index + 1).Select
 End Sub
 
