@@ -215,7 +215,7 @@ Sub GenerateSUSTAINInputFile()
             ' IF BMP CLASS = A
             If Sheets("3a - BMP Geometry").Range("V15").Value = "A" Then
                 Dim OrificeH, OrificeD, OrificeC As String
-                Dim WeirType, WeirH, WeirW, WeirTHERA As String
+                Dim weirType, WeirH, WeirW, WeirTHERA As String
                 
                 ' Save Orifice Info
                 If Sheets("3a - BMP Geometry").Range("V24").Value = NO Then
@@ -230,23 +230,23 @@ Sub GenerateSUSTAINInputFile()
                 
                 ' Save Weir Info
                 If Sheets("3a - BMP Geometry").Range("V29").Value = 1 Then
-                    WeirType = "1"
+                    weirType = "1"
                     WeirH = Sheets("3a - BMP Geometry").Range("D60").Value
                     WeirW = Sheets("3a - BMP Geometry").Range("G60").Value
                     WeirTHETA = "0"
 
                 ElseIf Sheets("3a - BMP Geometry").Range("V29").Value = 2 Then
-                    WeirType = "2"
+                    weirType = "2"
                     WeirH = Sheets("3a - BMP Geometry").Range("D60").Value
                     WeirW = "0"
                     WeirTHETA = Sheets("3a - BMP Geometry").Range("G62").Value
                 Else
-                    WeirType = "0"
+                    weirType = "0"
                     WeirH = "0"
                     WeirW = "0"
                     WeirTHETA = "0"
                 End If
-                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").Range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D12").Value & Chr(9) & OrificeH & Chr(9) & OrificeD & Chr(9) & OrificeC & Chr(9) & "3" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & WeirType & Chr(9) & WeirH & Chr(9) & WeirW & Chr(9) & WeirTHETA & Chr(9) & 1 & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0"
+                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").Range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D12").Value & Chr(9) & OrificeH & Chr(9) & OrificeD & Chr(9) & OrificeC & Chr(9) & "3" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & weirType & Chr(9) & WeirH & Chr(9) & WeirW & Chr(9) & WeirTHETA & Chr(9) & 1 & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0"
             End If
             
             

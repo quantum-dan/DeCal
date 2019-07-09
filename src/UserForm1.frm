@@ -1,7 +1,7 @@
 Option Explicit
 
 Private newID As String                     ' Unique BMP ID.
-Private BMPTYPE As String
+Private bmpType As String
 Private DataLoad As Boolean                 ' Loads data from spreadsheet if (True).
 Private LengthConstraint(3) As Double       ' Save properties of LENGTH decision variable.
 Private DepthConstraint(3) As Double        ' Save properties of DEPTH decision variable.
@@ -913,7 +913,7 @@ Dim BMPMatchRange As Range
     Select Case cboBMPType.Value
         
         Case "BIORETENTION", "DRYPOND", "WETPOND", "INFILTRATIONTRENCH", "SANDFILTER", "INFILTRATIONBASIN"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -951,7 +951,7 @@ Dim BMPMatchRange As Range
             
 
         Case "RAINBARREL"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = True
@@ -989,7 +989,7 @@ Dim BMPMatchRange As Range
             
 
         Case "CISTERN"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = True
@@ -1066,7 +1066,7 @@ Dim BMPMatchRange As Range
         '
 
         Case "POROUSPAVEMENT"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -1107,7 +1107,7 @@ Dim BMPMatchRange As Range
             
 
         Case "HYDRODYNAMICSEPERATOR"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -1157,7 +1157,7 @@ Dim BMPMatchRange As Range
         ' Yi Xu, 2015
         
         Case "SUBSURFACEGRAVELWETLAND"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
@@ -1201,7 +1201,7 @@ Dim BMPMatchRange As Range
             
             
         Case "ENHANCEDBIORETENTION"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
@@ -1242,7 +1242,7 @@ Dim BMPMatchRange As Range
             
             
         Case "INFILTRATIONCHAMBER"
-            BMPTYPE = "A"
+            bmpType = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
