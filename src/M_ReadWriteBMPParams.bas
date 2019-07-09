@@ -16,8 +16,8 @@ Sub WriteBmpParams()
     For ix = LBound(specifiers) To UBound(specifiers)
         'The odd syntax below seems to be necessary to avoid out of bounds errors
         data(ix) = ""
-        For Each Item In specifiers(ix)
-            data(ix) = data(ix) & Item & ","
+        For Each item In specifiers(ix)
+            data(ix) = data(ix) & item & ","
         Next
         data(ix) = data(ix) & Sheets(specifiers(ix)(0)).Range(specifiers(ix)(2)).Value
     Next
@@ -57,8 +57,8 @@ Sub ReadBmpParams()
     
     Close #1
     
-    For Each Item In data
-        Sheets(Item(0)).Range(Item(2)).Value = Item(3)
+    For Each item In data
+        Sheets(item(0)).Range(item(2)).Value = item(3)
     Next
     
 End Sub

@@ -1,3 +1,7 @@
+Private Sub LoadData_Click()
+    ReadTimeseries
+End Sub
+
 Private Sub WriteOutTS_Click()
     Save_parameters
     Write_Out_R_Inputs

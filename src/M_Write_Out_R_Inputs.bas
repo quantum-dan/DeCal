@@ -40,12 +40,12 @@ Set ppt_fsobj = CreateObject("Scripting.FileSystemObject")
 
 ' Find last rows with data
 With Sheets("2 - Time Series Data Entry")
-    v_in_LR = .Cells(Rows.Count, "B").End(xlUp).Row
-    dur_LR = .Cells(Rows.Count, "C").End(xlUp).Row
-    c_in_LR = .Cells(Rows.Count, "E").End(xlUp).Row
-    c_out_LR = .Cells(Rows.Count, "F").End(xlUp).Row
-    ppt_dt_LR = .Cells(Rows.Count, "H").End(xlUp).Row
-    ppt_LR = .Cells(Rows.Count, "I").End(xlUp).Row
+    v_in_LR = .Cells(Rows.Count, "B").End(xlUp).row
+    dur_LR = .Cells(Rows.Count, "C").End(xlUp).row
+    c_in_LR = .Cells(Rows.Count, "E").End(xlUp).row
+    c_out_LR = .Cells(Rows.Count, "F").End(xlUp).row
+    ppt_dt_LR = .Cells(Rows.Count, "H").End(xlUp).row
+    ppt_LR = .Cells(Rows.Count, "I").End(xlUp).row
 End With
 
 ' Read in to last row
