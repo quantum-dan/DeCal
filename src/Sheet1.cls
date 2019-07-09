@@ -1,7 +1,9 @@
 Private Sub CommandButton1_Click()
-    Make_File_Struct
-    Save_parameters
-    Worksheets(ActiveSheet.Index + 1).Select
+    Dim rPath As String
+    Dim sustainPath As String
+    rPath = Sheets("1 - Locate Executables").Range("C8").Value
+    sustainPath = Sheets("1 - Locate Executables").Range("C11").Value
+    VerifyAndProceed sustainPath, rPath
 End Sub
 
 Private Sub DefWorkingDir_Click()
