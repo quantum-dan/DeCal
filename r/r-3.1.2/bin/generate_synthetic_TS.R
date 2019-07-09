@@ -199,6 +199,7 @@ p.sub.events$iet_hr <- c(NA, p.sub.events$start[-1]-p.sub.events$end[-length(p.s
 # Pull out interarrival times
 iets <- data.frame(iet_hr=sort(p.sub.events$iet_hr[-1]), rank=c(1:length(p.sub.events$iet_hr[-1])))
 iets$iet_hr <- iets$iet_hr - (time.new/60) # remove built-in minmum time
+iets <- iets[iets$iet_hr > 0, ] # Sometimes there are 0 gaps for some reason, which breaks the fit function
 iets$p <- iets$rank/max(iets$rank)
 
 # Identify and fit the best distribution
