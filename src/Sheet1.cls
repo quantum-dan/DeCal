@@ -21,3 +21,8 @@ End Sub
 Private Sub DefSUSTAINPath_Click()
    Sheets("1 - Locate Executables").Range("C11").Value = GetSUSTAINFile
 End Sub
+
+Private Sub LoadProject_Click()
+    ' Load in existing data
+    ReadBmpParams
+End Sub

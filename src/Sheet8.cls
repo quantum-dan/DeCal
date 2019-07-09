@@ -5,7 +5,7 @@ End Sub
 
 
 Private Sub CommandButton2_Click()
-    Worksheets(ActiveSheet.Index + 1).Select
+    Worksheets(ActiveSheet.index + 1).Select
 End Sub
 
 

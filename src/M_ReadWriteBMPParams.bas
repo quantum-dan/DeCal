@@ -37,3 +37,28 @@ Sub WriteBmpParams()
     Set fso = Nothing
             
 End Sub
+
+Sub ReadBmpParams()
+    ' Read in the data written to the file previously
+    Dim input_data(33), data(33)
+    Dim filepath As String
+    'Dim fso, in_file As Object
+    Dim index As Integer
+    filepath = ReturnWorkingDir & "\data\bmpdata.csv"
+    index = 0
+    
+    Open filepath For Input As #1
+    
+    Do Until EOF(1)
+        Line Input #1, input_data(index)
+        data(index) = Split(input_data(index), ",")
+        index = index + 1
+    Loop
+    
+    Close #1
+    
+    For Each Item In data
+        Sheets(Item(0)).Range(Item(2)).Value = Item(3)
+    Next
+    
+End Sub

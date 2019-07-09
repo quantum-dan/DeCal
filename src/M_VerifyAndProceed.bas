@@ -38,5 +38,5 @@ End Sub
 Sub Proceed()
     Make_File_Struct
     Save_parameters
-    Worksheets(ActiveSheet.Index + 1).Select
+    Worksheets(ActiveSheet.index + 1).Select
 End Sub
