@@ -1,9 +1,11 @@
 Private Sub CommandButton1_Click()
     Dim rPath As String
     Dim sustainPath As String
+    Dim wdir As String
+    wdir = ReturnWorkingDir
     rPath = Sheets("1 - Locate Executables").Range("C8").Value
     sustainPath = Sheets("1 - Locate Executables").Range("C11").Value
-    VerifyAndProceed sustainPath, rPath
+    VerifyAndProceed sustainPath, rPath, wdir
 End Sub
 
 Private Sub DefWorkingDir_Click()
