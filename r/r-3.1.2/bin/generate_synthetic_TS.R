@@ -42,6 +42,9 @@ Routput_dir <- plot_save_path
 SUSTAIN_dir <- paste(wdir, "/SUSTAIN/", sep="")
 SUSTAINinput_dir <- paste(main_save_path, "/SUSTAIN/InputTSFiles/", sep="") 
 
+
+sinkfile <- file(paste(main_save_path, "/R_TSGeneration_Errors.txt"), open="wt")
+sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
 sink(paste(main_save_path, "/R_TSGeneration_Messages.txt", sep=""), append=F,type="output")
 
 num = as.numeric(as.character(data_params[3,1]))
@@ -618,5 +621,6 @@ if( onehr_flag == 1) {
 }
 save.image(paste(data_save_path, "generate_synthetic_TS_RWorkspace.RData", sep=""))
 
+close(sinkfile)
 sink(NULL)
 
