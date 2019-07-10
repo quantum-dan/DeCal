@@ -24,9 +24,13 @@ End Sub
 
 Private Sub LoadProject_Click()
     ' Load in existing data
+    On Error GoTo ErrorHandler
     ReadParams
     ReadBmpParams
     ReadTimeseries
+    
+ErrorHandler:
+    MsgBox "Error " & Err.Number & ": " & Err.Description
 End Sub
 
 Private Sub SetDefaultPaths_Click()

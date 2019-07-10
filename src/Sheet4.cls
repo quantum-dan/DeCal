@@ -1,9 +1,13 @@
 Private Sub GenerateInputFileandSynTS_Click()
+    On Error GoTo ErrorHandler
     Save_parameters
     WriteParams
     Run_R_SyntheticTS_Script
     GenerateSUSTAINInputFile
     Worksheets(ActiveSheet.index + 1).Select
+    
+ErrorHandler:
+    MsgBox "Error " & Err.Number & ": " & Err.Description
 End Sub
 
 
