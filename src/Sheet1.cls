@@ -24,5 +24,7 @@ End Sub
 
 Private Sub LoadProject_Click()
     ' Load in existing data
+    ReadParams
     ReadBmpParams
+    ReadTimeseries
 End Sub

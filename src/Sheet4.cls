@@ -1,5 +1,6 @@
 Private Sub GenerateInputFileandSynTS_Click()
     Save_parameters
+    WriteParams
     Run_R_SyntheticTS_Script
     GenerateSUSTAINInputFile
     Worksheets(ActiveSheet.index + 1).Select

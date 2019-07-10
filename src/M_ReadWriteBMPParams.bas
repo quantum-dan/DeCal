@@ -29,8 +29,8 @@ Sub WriteBmpParams()
     Set fso = CreateObject("Scripting.FileSystemObject")
     
     Set out_file = fso.CreateTextFile(file_path)
-    For Each Line In data
-        out_file.WriteLine (Line)
+    For Each line In data
+        out_file.WriteLine (line)
     Next
     
     Set out_file = Nothing

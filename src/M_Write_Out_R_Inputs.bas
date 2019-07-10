@@ -1,4 +1,6 @@
 Function Write_Out_R_Inputs()
+Dim firstrow As Integer
+firstrow = 14
 
 '---------------------------------------------------------------------------------------------
 ' ABOUT:
@@ -49,12 +51,12 @@ With Sheets("2 - Time Series Data Entry")
 End With
 
 ' Read in to last row
-v_in = Sheets("2 - Time Series Data Entry").Range("B12:B" & v_in_LR).Value
-dur = Sheets("2 - Time Series Data Entry").Range("C12:C" & dur_LR).Value
-c_in = Sheets("2 - Time Series Data Entry").Range("E12:E" & c_in_LR).Value
-c_out = Sheets("2 - Time Series Data Entry").Range("F12:F2" & c_out_LR).Value
-ppt_dt = Sheets("2 - Time Series Data Entry").Range("H12:H" & ppt_dt_LR).Value
-ppt = Sheets("2 - Time Series Data Entry").Range("I12:I" & ppt_LR).Value
+v_in = Sheets("2 - Time Series Data Entry").Range("B" & firstrow & ":B" & v_in_LR).Value
+dur = Sheets("2 - Time Series Data Entry").Range("C" & firstrow & ":C" & dur_LR).Value
+c_in = Sheets("2 - Time Series Data Entry").Range("E" & firstrow & ":E" & c_in_LR).Value
+c_out = Sheets("2 - Time Series Data Entry").Range("F" & firstrow & ":F2" & c_out_LR).Value
+ppt_dt = Sheets("2 - Time Series Data Entry").Range("H" & firstrow & ":H" & ppt_dt_LR).Value
+ppt = Sheets("2 - Time Series Data Entry").Range("I" & firstrow & ":I" & ppt_LR).Value
 
 
 '--------------------
