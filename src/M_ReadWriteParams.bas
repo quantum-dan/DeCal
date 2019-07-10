@@ -26,7 +26,7 @@ Sub ReadParams()
     Open path For Input As #1
     For ix = 0 To orderLen
         Line Input #1, line
-        Sheets(order(ix, 0)).Range(order(ix, 1)).Value = line
+        Sheets(order(ix, 0)).range(order(ix, 1)).Value = line
     Next
     Close #1
 End Sub
@@ -36,7 +36,7 @@ Sub WriteParams()
     path = ReturnWorkingDir & "\data\settings.csv"
     Open path For Output As #1
     For line = 0 To orderLen
-        Print #1, Sheets(order(line, 0)).Range(order(line, 1)).Value
+        Print #1, Sheets(order(line, 0)).range(order(line, 1)).Value
     Next
     Close #1
 End Sub

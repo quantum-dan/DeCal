@@ -19,7 +19,7 @@ Sub WriteBmpParams()
         For Each item In specifiers(ix)
             data(ix) = data(ix) & item & ","
         Next
-        data(ix) = data(ix) & Sheets(specifiers(ix)(0)).Range(specifiers(ix)(2)).Value
+        data(ix) = data(ix) & Sheets(specifiers(ix)(0)).range(specifiers(ix)(2)).Value
     Next
     
     'Write to file
@@ -58,7 +58,7 @@ Sub ReadBmpParams()
     Close #1
     
     For Each item In data
-        Sheets(item(0)).Range(item(2)).Value = item(3)
+        Sheets(item(0)).range(item(2)).Value = item(3)
     Next
     
 End Sub

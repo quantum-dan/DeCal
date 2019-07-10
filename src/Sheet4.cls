@@ -8,20 +8,20 @@ End Sub
 
 
 Private Sub Worksheet_Calculate()
-    If Range("T4").Value <> 2 Then
-        Range("D10").Interior.ColorIndex = 0
-        Range("G10").Interior.ColorIndex = 0
-        Range("D15").Interior.ColorIndex = 15
-        Range("G15").Interior.ColorIndex = 15
-        Range("D18").Interior.ColorIndex = 15
-        Range("G18").Interior.ColorIndex = 15
-    ElseIf Range("T4").Value = 2 Then
-        Range("D10").Interior.ColorIndex = 15
-        Range("G10").Interior.ColorIndex = 15
-        Range("D15").Interior.ColorIndex = 0
-        Range("G15").Interior.ColorIndex = 0
-        Range("D18").Interior.ColorIndex = 0
-        Range("G18").Interior.ColorIndex = 0
+    If range("T4").Value <> 2 Then
+        range("D10").Interior.ColorIndex = 0
+        range("G10").Interior.ColorIndex = 0
+        range("D15").Interior.ColorIndex = 15
+        range("G15").Interior.ColorIndex = 15
+        range("D18").Interior.ColorIndex = 15
+        range("G18").Interior.ColorIndex = 15
+    ElseIf range("T4").Value = 2 Then
+        range("D10").Interior.ColorIndex = 15
+        range("G10").Interior.ColorIndex = 15
+        range("D15").Interior.ColorIndex = 0
+        range("G15").Interior.ColorIndex = 0
+        range("D18").Interior.ColorIndex = 0
+        range("G18").Interior.ColorIndex = 0
     End If
 
 End Sub

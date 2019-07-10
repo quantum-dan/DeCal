@@ -51,12 +51,12 @@ With Sheets("2 - Time Series Data Entry")
 End With
 
 ' Read in to last row
-v_in = Sheets("2 - Time Series Data Entry").Range("B" & firstrow & ":B" & v_in_LR).Value
-dur = Sheets("2 - Time Series Data Entry").Range("C" & firstrow & ":C" & dur_LR).Value
-c_in = Sheets("2 - Time Series Data Entry").Range("E" & firstrow & ":E" & c_in_LR).Value
-c_out = Sheets("2 - Time Series Data Entry").Range("F" & firstrow & ":F2" & c_out_LR).Value
-ppt_dt = Sheets("2 - Time Series Data Entry").Range("H" & firstrow & ":H" & ppt_dt_LR).Value
-ppt = Sheets("2 - Time Series Data Entry").Range("I" & firstrow & ":I" & ppt_LR).Value
+v_in = Sheets("2 - Time Series Data Entry").range("B" & firstrow & ":B" & v_in_LR).Value
+dur = Sheets("2 - Time Series Data Entry").range("C" & firstrow & ":C" & dur_LR).Value
+c_in = Sheets("2 - Time Series Data Entry").range("E" & firstrow & ":E" & c_in_LR).Value
+c_out = Sheets("2 - Time Series Data Entry").range("F" & firstrow & ":F2" & c_out_LR).Value
+ppt_dt = Sheets("2 - Time Series Data Entry").range("H" & firstrow & ":H" & ppt_dt_LR).Value
+ppt = Sheets("2 - Time Series Data Entry").range("I" & firstrow & ":I" & ppt_LR).Value
 
 
 '--------------------

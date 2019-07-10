@@ -12,7 +12,7 @@ Dim errorCode As Integer
 Dim wd_path, Rscrpt_path As String
 ' This doesn't seem to be used?
 wd_path = ReturnWorkingDir()
-Rscrpt_path = Sheets("1 - Locate Executables").Range("C8").Value
+Rscrpt_path = Sheets("1 - Locate Executables").range("C8").Value
 
 
 
