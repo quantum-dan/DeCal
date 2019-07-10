@@ -11,7 +11,7 @@ Sub VerifyAndProceed(sustainPath As String, rPath As String, wdir As String)
     If (sustainValid And rValid) Then
         If (InStr(wdir, " ") = 0) Then
         ' Make sure working directory doesn't have spaces
-            Proceed
+            proceed
         Else
             ' Require user to change their working directory to one  without spaces
             MsgBox ("Error: currently, SUSTAIN will not work if your working directory path has any spaces in it.  Please change your working directory to one without spaces.")
@@ -30,12 +30,12 @@ Sub VerifyAndProceed(sustainPath As String, rPath As String, wdir As String)
         Dim response As Integer
         response = MsgBox(message, vbYesNo)
         If (response = 6) Then
-            Proceed
+            proceed
         End If
     End If
 End Sub
 
-Sub Proceed()
+Sub proceed()
     Make_File_Struct
     Save_parameters
     Worksheets(ActiveSheet.index + 1).Select
