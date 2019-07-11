@@ -1,7 +1,8 @@
 Sub ReadTimeseries()
     ' Read in stored timeseries data (tab 2)
     Dim columns()
-    Dim firstrow, index, row, maxrow As Integer
+    Dim firstrow As Integer
+    Dim maxrow, index, row As Long
     Dim datapath, item As String
     datapath = ReturnWorkingDir() & "\data\"
     columns = Array(Array("B", "v_in.csv"), _

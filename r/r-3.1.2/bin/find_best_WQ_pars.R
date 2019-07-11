@@ -40,7 +40,7 @@ data_save_path<-paste(data_save_path,"/data/",sep="")
 
 # SINK MESSAGES
 sink(paste(main_save_path, "/R_ParameterCalibration_Messages.txt", sep=""),append=F,type="output")
-sinkfile <- file(paste(main_save_path, "/R_ParameterCalibration_Errors.txt"), open="wt")
+sinkfile <- file(paste(main_save_path, "/R_ParameterCalibration_Errors.txt", sep=""), open="wt")
 sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
 
 
@@ -402,7 +402,7 @@ write.table(cout.obs.out, file=paste(data_save_path, "ObservedCoutEMCs.csv", sep
 
 save.image(paste(data_save_path, "R_ParameterCal_Workspace.RData", sep=""))
 
-
+sink(NULL, type="message")
 close(sinkfile)
 sink(NULL)
 
