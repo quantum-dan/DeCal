@@ -12,7 +12,7 @@ Sub GenerateSUSTAINInputFile()
     ' Cards are static and read from the main SUSTAIN directory.  inp_file is written to in the working directory.
 
     wd_path = ReturnWorkingDir()
-    base_wd = Sheets("1 - Locate Executables").range("C5").Value
+    base_wd = Sheets("1 - Locate Executables").Range("C5").Value
     card_path = base_wd & "\SUSTAIN\SUSTAINCardHeaders"
     inp_file = wd_path & "\SUSTAIN\BMP_Cal_InputFile.inp"
 
@@ -110,7 +110,7 @@ Sub GenerateSUSTAINInputFile()
             
                 ' Get Number of Monte Carlo Simulations (number of pollutants here)
                 Dim nsims As Integer
-                nsims = Sheets("4 - Calibration Parameters").range("G5").Value
+                nsims = Sheets("4 - Calibration Parameters").Range("G5").Value
                 For n = 1 To nsims
                     Print #TextFile_Inp, n & Chr(9) & "WQ" & n & Chr(9) & "1" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0"
                 Next
@@ -178,7 +178,7 @@ Sub GenerateSUSTAINInputFile()
     
         
             'Write out c715 arguments to input file
-            Print #TextFile_Inp, "1" & Chr(9) & "BMP" & Chr(9) & Sheets("3a - BMP Geometry").range("V14").Value & Chr(9) & "1" & Chr(9) & "1" & Chr(9) & "0" & Chr(9) & "1" & Chr(9) & "0" & Chr(9)
+            Print #TextFile_Inp, "1" & Chr(9) & "BMP" & Chr(9) & Sheets("3a - BMP Geometry").Range("V14").Value & Chr(9) & "1" & Chr(9) & "1" & Chr(9) & "0" & Chr(9) & "1" & Chr(9) & "0" & Chr(9)
             
             'Save & Close Text File
             Close TextFile_Inp
@@ -213,40 +213,40 @@ Sub GenerateSUSTAINInputFile()
             'Write out c725 arguments to input file
             
             ' IF BMP CLASS = A
-            If Sheets("3a - BMP Geometry").range("V15").Value = "A" Then
+            If Sheets("3a - BMP Geometry").Range("V15").Value = "A" Then
                 Dim OrificeH, OrificeD, OrificeC As String
-                Dim weirType, WeirH, WeirW, WeirTHERA As String
+                Dim WeirType, WeirH, WeirW, WeirTHERA As String
                 
                 ' Save Orifice Info
-                If Sheets("3a - BMP Geometry").range("V24").Value = NO Then
+                If Sheets("3a - BMP Geometry").Range("V24").Value = NO Then
                     OrificeH = "0"
                     OrificeD = "0"
                     OrificeC = "0"
                 Else
-                    OrificeH = Sheets("3a - BMP Geometry").range("D49").Value
-                    OrificeD = Sheets("3a - BMP Geometry").range("G49").Value
-                    OrificeC = Sheets("3a - BMP Geometry").range("V23").Value
+                    OrificeH = Sheets("3a - BMP Geometry").Range("D49").Value
+                    OrificeD = Sheets("3a - BMP Geometry").Range("G49").Value
+                    OrificeC = Sheets("3a - BMP Geometry").Range("V23").Value
                 End If
                 
                 ' Save Weir Info
-                If Sheets("3a - BMP Geometry").range("V29").Value = 1 Then
-                    weirType = "1"
-                    WeirH = Sheets("3a - BMP Geometry").range("D60").Value
-                    WeirW = Sheets("3a - BMP Geometry").range("G60").Value
+                If Sheets("3a - BMP Geometry").Range("V29").Value = 1 Then
+                    WeirType = "1"
+                    WeirH = Sheets("3a - BMP Geometry").Range("D60").Value
+                    WeirW = Sheets("3a - BMP Geometry").Range("G60").Value
                     WeirTHETA = "0"
 
-                ElseIf Sheets("3a - BMP Geometry").range("V29").Value = 2 Then
-                    weirType = "2"
-                    WeirH = Sheets("3a - BMP Geometry").range("D60").Value
+                ElseIf Sheets("3a - BMP Geometry").Range("V29").Value = 2 Then
+                    WeirType = "2"
+                    WeirH = Sheets("3a - BMP Geometry").Range("D60").Value
                     WeirW = "0"
-                    WeirTHETA = Sheets("3a - BMP Geometry").range("G62").Value
+                    WeirTHETA = Sheets("3a - BMP Geometry").Range("G62").Value
                 Else
-                    weirType = "0"
+                    WeirType = "0"
                     WeirH = "0"
                     WeirW = "0"
                     WeirTHETA = "0"
                 End If
-                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D12").Value & Chr(9) & OrificeH & Chr(9) & OrificeD & Chr(9) & OrificeC & Chr(9) & "3" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & weirType & Chr(9) & WeirH & Chr(9) & WeirW & Chr(9) & WeirTHETA & Chr(9) & 1 & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0"
+                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").Range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D12").Value & Chr(9) & OrificeH & Chr(9) & OrificeD & Chr(9) & OrificeC & Chr(9) & "3" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & WeirType & Chr(9) & WeirH & Chr(9) & WeirW & Chr(9) & WeirTHETA & Chr(9) & 1 & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0" & Chr(9) & "0"
             End If
             
             
@@ -283,8 +283,8 @@ Sub GenerateSUSTAINInputFile()
         
             'Write out c735 arguments to input file
             
-            If Sheets("3a - BMP Geometry").range("V15").Value = "B" Then
-                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D12").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D14").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D16").Value & Chr(9) & Sheets("3a - BMP Geometry").range("G14").Value & Chr(9) & Sheets("3a - BMP Geometry").range("G16").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D18").Value & Chr(9) & 1
+            If Sheets("3a - BMP Geometry").Range("V15").Value = "B" Then
+                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").Range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D14").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D16").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("G14").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("G16").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D18").Value & Chr(9) & 1
             End If
             
             'Save & Close Text File
@@ -321,30 +321,30 @@ Sub GenerateSUSTAINInputFile()
             Dim aveg, finfil, undswitch, unddepth, undvoid, undinfilt, suction, imdmax, maxinfilt, decaycons, drytime, maxvolume As Double
             
             ' Establish Infiltration model parameters
-            If Sheets("3b - BMP Subsurface Properties").range("V8").Value = 0 Then
+            If Sheets("3b - BMP Subsurface Properties").Range("V8").Value = 0 Then
                 aveg = 0
-                finfilt = Sheets("3b - BMP Subsurface Properties").range("D30").Value
-                undinfilt = Sheets("3b - BMP Subsurface Properties").range("D32").Value
-                suction = Sheets("3b - BMP Subsurface Properties").range("D9").Value
-                imdmax = Sheets("3b - BMP Subsurface Properties").range("D11").Value
+                finfilt = Sheets("3b - BMP Subsurface Properties").Range("D30").Value
+                undinfilt = Sheets("3b - BMP Subsurface Properties").Range("D32").Value
+                suction = Sheets("3b - BMP Subsurface Properties").Range("D9").Value
+                imdmax = Sheets("3b - BMP Subsurface Properties").Range("D11").Value
                 maxinfilt = 0
                 decaycons = 0
                 drytime = 0
                 maxvolume = 0
-            ElseIf Sheets("3b - BMP Subsurface Properties").range("V8").Value = 1 Then
+            ElseIf Sheets("3b - BMP Subsurface Properties").Range("V8").Value = 1 Then
                 aveg = 0
-                finfilt = Sheets("3b - BMP Subsurface Properties").range("D30").Value
-                undinfilt = Sheets("3b - BMP Subsurface Properties").range("D32").Value
+                finfilt = Sheets("3b - BMP Subsurface Properties").Range("D30").Value
+                undinfilt = Sheets("3b - BMP Subsurface Properties").Range("D32").Value
                 suction = 0
                 imdmax = 0
-                maxinfilt = Sheets("3b - BMP Subsurface Properties").range("G9").Value
-                decaycons = Sheets("3b - BMP Subsurface Properties").range("G11").Value
-                drytime = Sheets("3b - BMP Subsurface Properties").range("G13").Value
-                maxvolume = Sheets("3b - BMP Subsurface Properties").range("G15").Value
+                maxinfilt = Sheets("3b - BMP Subsurface Properties").Range("G9").Value
+                decaycons = Sheets("3b - BMP Subsurface Properties").Range("G11").Value
+                drytime = Sheets("3b - BMP Subsurface Properties").Range("G13").Value
+                maxvolume = Sheets("3b - BMP Subsurface Properties").Range("G15").Value
             Else
-                aveg = Sheets("3b - BMP Subsurface Properties").range("D15").Value
-                finfilt = Sheets("3b - BMP Subsurface Properties").range("D30").Value
-                undinfilt = Sheets("3b - BMP Subsurface Properties").range("D32").Value
+                aveg = Sheets("3b - BMP Subsurface Properties").Range("D15").Value
+                finfilt = Sheets("3b - BMP Subsurface Properties").Range("D30").Value
+                undinfilt = Sheets("3b - BMP Subsurface Properties").Range("D32").Value
                 suction = 0
                 imdmax = 0
                 maxinfilt = 0
@@ -354,20 +354,20 @@ Sub GenerateSUSTAINInputFile()
             End If
               
            ' Establish underdrain model parameters
-            If Sheets("3b - BMP Subsurface Properties").range("V15").Value = 0 Then
+            If Sheets("3b - BMP Subsurface Properties").Range("V15").Value = 0 Then
                 undswitch = 0
                 unddepth = 0
                 undvoid = 0
       
             Else
                 undswitch = 1
-                unddepth = Sheets("3b - BMP Subsurface Properties").range("G24").Value
-                undvoid = Sheets("3b - BMP Subsurface Properties").range("G26").Value
+                unddepth = Sheets("3b - BMP Subsurface Properties").Range("G24").Value
+                undvoid = Sheets("3b - BMP Subsurface Properties").Range("G26").Value
             End If
                 
             
             
-            Print #TextFile_Inp, "1" & Chr(9) & Sheets("3b - BMP Subsurface Properties").range("V8").Value & Chr(9) & Sheets("3a - BMP Geometry").range("G67").Value & Chr(9) & Sheets("4 - Calibration Parameters").range("U4").Value - 1 & Chr(9) & Sheets("3b - BMP Subsurface Properties").range("D22").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").range("D24").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").range("D26").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").range("D28").Value & Chr(9) & aveg & Chr(9) & finfilt & Chr(9) & undswitch & Chr(9) & unddepth & Chr(9) & undvoid & Chr(9) & undinfilt & Chr(9) & suction & Chr(9) & imdmax & Chr(9) & maxinfilt & Chr(9) & decaycons & Chr(9) & drytime & Chr(9) & maxvolume
+            Print #TextFile_Inp, "1" & Chr(9) & Sheets("3b - BMP Subsurface Properties").Range("V8").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("G67").Value & Chr(9) & Sheets("4 - Calibration Parameters").Range("U4").Value - 1 & Chr(9) & Sheets("3b - BMP Subsurface Properties").Range("D22").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").Range("D24").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").Range("D26").Value & Chr(9) & Sheets("3b - BMP Subsurface Properties").Range("D28").Value & Chr(9) & aveg & Chr(9) & finfilt & Chr(9) & undswitch & Chr(9) & unddepth & Chr(9) & undvoid & Chr(9) & undinfilt & Chr(9) & suction & Chr(9) & imdmax & Chr(9) & maxinfilt & Chr(9) & decaycons & Chr(9) & drytime & Chr(9) & maxvolume
             'Save & Close Text File
             Close TextFile_Inp
             
@@ -401,7 +401,7 @@ Sub GenerateSUSTAINInputFile()
         
             'Write out c745 arguments to input file
             
-            If Sheets("3b - BMP Subsurface Properties").range("V8").Value = 2 Then
+            If Sheets("3b - BMP Subsurface Properties").Range("V8").Value = 2 Then
             ' NOTE: These values are taken from Holtan 1971 and are for irrigated corn in Ohio...
                   Print #TextFile_Inp, "1" & Chr(9) & "0.1" & Chr(9) & "0.1" & Chr(9) & "0.16" & Chr(9) & "0.21" & Chr(9) & "0.33" & Chr(9) & "0.5" & Chr(9) & "0.7" & Chr(9) & "0.85" & Chr(9) & "0.95" & Chr(9) & "0.25" & Chr(9) & "0.1" & Chr(9) & "0.1"
             End If
@@ -472,8 +472,8 @@ Sub GenerateSUSTAINInputFile()
         
             'Write out c761 arguments to input file
             
-            If Sheets("3a - BMP Geometry").range("V15").Value = "D" Then
-                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D12").Value & Chr(9) & Sheets("3a - BMP Geometry").range("G18").Value & Chr(9) & Sheets("3a - BMP Geometry").range("G16").Value & Chr(9) & Sheets("3a - BMP Geometry").range("D18").Value & Chr(9) & Sheets("4 - Calibration Parameters").range("U4").Value - 1 & Chr(9) & "etmult_insert"
+            If Sheets("3a - BMP Geometry").Range("V15").Value = "D" Then
+                Print #TextFile_Inp, "1" & Chr(9) & Sheets("3a - BMP Geometry").Range("G12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D12").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("G18").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("G16").Value & Chr(9) & Sheets("3a - BMP Geometry").Range("D18").Value & Chr(9) & Sheets("4 - Calibration Parameters").Range("U4").Value - 1 & Chr(9) & "etmult_insert"
             End If
             
             'Save & Close Text File
@@ -507,11 +507,11 @@ Sub GenerateSUSTAINInputFile()
     
         
             'Write out c765 arguments to input file
-            If Sheets("4 - Calibration Parameters").range("T4").Value <> 2 Then
+            If Sheets("4 - Calibration Parameters").Range("T4").Value <> 2 Then
                 ReDim ks(nsims) As Double
                 Dim ks_txt As String
                 For n = 1 To nsims
-                    ks(n) = Sheets("4 - Calibration Parameters").range("D10").Value + (Rnd * (Sheets("4 - Calibration Parameters").range("G10").Value - Sheets("4 - Calibration Parameters").range("D10").Value))
+                    ks(n) = Sheets("4 - Calibration Parameters").Range("D10").Value + (Rnd * (Sheets("4 - Calibration Parameters").Range("G10").Value - Sheets("4 - Calibration Parameters").Range("D10").Value))
                     If n = 1 Then
                         ks_txt = CStr(Round(ks(n), 3))
                     Else
@@ -566,11 +566,11 @@ Sub GenerateSUSTAINInputFile()
     
         
             'Write out c766 arguments to input file
-            If Sheets("4 - Calibration Parameters").range("T4").Value = 2 Then
+            If Sheets("4 - Calibration Parameters").Range("T4").Value = 2 Then
                 ReDim k1s(nsims) As Double
                 Dim k1s_txt As String
                 For n = 1 To nsims
-                    k1s(n) = Sheets("4 - Calibration Parameters").range("D15").Value + (Rnd * (Sheets("4 - Calibration Parameters").range("G15").Value - Sheets("4 - Calibration Parameters").range("D15").Value))
+                    k1s(n) = Sheets("4 - Calibration Parameters").Range("D15").Value + (Rnd * (Sheets("4 - Calibration Parameters").Range("G15").Value - Sheets("4 - Calibration Parameters").Range("D15").Value))
                     If n = 1 Then
                         k1s_txt = CStr(Round(k1s(n), 3))
                     Else
@@ -615,11 +615,11 @@ Sub GenerateSUSTAINInputFile()
     
         
             'Write out c767 arguments to input file
-            If Sheets("4 - Calibration Parameters").range("T4").Value = 2 Then
+            If Sheets("4 - Calibration Parameters").Range("T4").Value = 2 Then
                 ReDim Cs(nsims) As Double
                 Dim Cs_txt As String
                 For n = 1 To nsims
-                    Cs(n) = Sheets("4 - Calibration Parameters").range("D18").Value + (Rnd * (Sheets("4 - Calibration Parameters").range("G18").Value - Sheets("4 - Calibration Parameters").range("D18").Value))
+                    Cs(n) = Sheets("4 - Calibration Parameters").Range("D18").Value + (Rnd * (Sheets("4 - Calibration Parameters").Range("G18").Value - Sheets("4 - Calibration Parameters").Range("D18").Value))
                     If n = 1 Then
                         Cs_txt = CStr(Round(Cs(n), 3))
                     Else

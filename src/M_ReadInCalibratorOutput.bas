@@ -24,7 +24,7 @@ file_stats = outdir & "SimulationPerformanceStats.csv"
 
 ' Read In Modeled Couts
 
-With ws_cout_mod.QueryTables.Add(Connection:="TEXT;" & file_cout_mod, Destination:=ws_cout_mod.range("A1"))
+With ws_cout_mod.QueryTables.Add(Connection:="TEXT;" & file_cout_mod, Destination:=ws_cout_mod.Range("A1"))
      .TextFileParseType = xlDelimited
      .TextFileCommaDelimiter = True
      .Refresh
@@ -33,7 +33,7 @@ End With
 
 
 ' Read In Observed Couts
-With ws_cout_obs.QueryTables.Add(Connection:="TEXT;" & file_cout_obs, Destination:=ws_cout_obs.range("A1"))
+With ws_cout_obs.QueryTables.Add(Connection:="TEXT;" & file_cout_obs, Destination:=ws_cout_obs.Range("A1"))
      .TextFileParseType = xlDelimited
      .TextFileCommaDelimiter = True
      .Refresh
@@ -41,7 +41,7 @@ End With
 
 
 ' Read In Modeled Couts
-With ws_stats.QueryTables.Add(Connection:="TEXT;" & file_stats, Destination:=ws_stats.range("A1"))
+With ws_stats.QueryTables.Add(Connection:="TEXT;" & file_stats, Destination:=ws_stats.Range("A1"))
      .TextFileParseType = xlDelimited
      .TextFileCommaDelimiter = True
      .Refresh
@@ -60,7 +60,7 @@ Sub ExportChart()
     Set objChrt = Sheets("7 - Post Processing").ChartObjects(1)
     Set myChart = objChrt.Chart
     Dim score As String
-    score = Sheets("7 - Post Processing").range("P15")
+    score = Sheets("7 - Post Processing").Range("P15")
 
     If score = "N/A" Then
         params_filename = R_file & "Plot_K-" & Format(Now(), "DD-MMM-YYYY_hhmm_AMPM") & ".png"
@@ -91,7 +91,7 @@ Dim params_fsobj As Object
 Set params_fsobj = CreateObject("Scripting.FileSystemObject")
 
 Dim score As String
-score = Sheets("7 - Post Processing").range("P15")
+score = Sheets("7 - Post Processing").Range("P15")
 
 If score = "N/A" Then
     params_filename = R_file & "K_values-" & Format(Now(), "DD-MMM-YYYY_hhmm_AMPM") & ".csv"
@@ -107,13 +107,13 @@ Set params_txtFile = params_fsobj.CreateTextFile(params_filename)
 
 
 params_txtFile.WriteLine "Selected K Value"
-params_txtFile.WriteLine Sheets("7 - Post Processing").range("P13")
+params_txtFile.WriteLine Sheets("7 - Post Processing").Range("P13")
 params_txtFile.WriteLine "Selected C* Value"
-params_txtFile.WriteLine Sheets("7 - Post Processing").range("P15").Value
+params_txtFile.WriteLine Sheets("7 - Post Processing").Range("P15").Value
 params_txtFile.WriteLine "RMSE"
-params_txtFile.WriteLine Sheets("7 - Post Processing").range("P14").Value
+params_txtFile.WriteLine Sheets("7 - Post Processing").Range("P14").Value
 params_txtFile.WriteLine "KS Value"
-params_txtFile.WriteLine Sheets("7 - Post Processing").range("P16").Value
+params_txtFile.WriteLine Sheets("7 - Post Processing").Range("P16").Value
 params_txtFile.Close
 Set params_txtFile = Nothing
 Set params_fsobj = Nothing

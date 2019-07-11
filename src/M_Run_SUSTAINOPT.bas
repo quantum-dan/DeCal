@@ -10,7 +10,7 @@ Sub Run_SUSTAINOPT()
     ' Read in working directory file path and path to R executable
     Dim wd_path, Rscrpt_path As String
     wd_path = ReturnWorkingDir()
-    sustain_path = Sheets("1 - Locate Executables").range("C11").Value
+    sustain_path = Sheets("1 - Locate Executables").Range("C11").Value
     
     
         

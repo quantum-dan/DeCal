@@ -12,7 +12,7 @@ Dim errorCode As Integer
 Dim wd_path, Rscrpt_path As String
 ' This doesn't seem to be used?
 wd_path = ReturnWorkingDir()
-Rscrpt_path = Sheets("1 - Locate Executables").range("C8").Value
+Rscrpt_path = Sheets("1 - Locate Executables").Range("C8").Value
 
 ' Read in other function arguments
 
@@ -20,8 +20,8 @@ Dim n_sims As Integer
 Dim flow_threshold As Double
 
 
-n_sims = Sheets("4 - Calibration Parameters").range("G5").Value
-flow_threshold = Sheets("4 - Calibration Parameters").range("D21").Value
+n_sims = Sheets("4 - Calibration Parameters").Range("G5").Value
+flow_threshold = Sheets("4 - Calibration Parameters").Range("D21").Value
 
 Dim Rdir As String
 ' Get the directory Rscript.exe is in by taking the path up to the last \

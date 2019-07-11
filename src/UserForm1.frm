@@ -1,7 +1,7 @@
 Option Explicit
 
 Private newID As String                     ' Unique BMP ID.
-Private bmpType As String
+Private BMPTYPE As String
 Private DataLoad As Boolean                 ' Loads data from spreadsheet if (True).
 Private LengthConstraint(3) As Double       ' Save properties of LENGTH decision variable.
 Private DepthConstraint(3) As Double        ' Save properties of DEPTH decision variable.
@@ -78,14 +78,14 @@ End Sub
 
 Private Sub BMPDefaultCommand_Click()
 
-Dim BMPindxrange As range
+Dim BMPindxrange As Range
 Dim OB1 As Variant
 Dim OB2 As Variant
 
 
 
     If cboBMPType = "BIORETENTION" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C5")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C5")
          txtOHeight.Value = BMPindxrange.Offset(0, 1)
          txtODiam.Value = BMPindxrange.Offset(0, 2)
              Set OB1 = BMPindxrange.Offset(0, 3)
@@ -121,7 +121,7 @@ Dim OB2 As Variant
     End If
     
     If cboBMPType = "DRYPOND" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C6")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C6")
          txtOHeight.Value = BMPindxrange.Offset(0, 1)
          txtODiam.Value = BMPindxrange.Offset(0, 2)
             Set OB1 = BMPindxrange.Offset(0, 3)
@@ -157,7 +157,7 @@ Dim OB2 As Variant
     End If
     
     If cboBMPType = "ENHANCEDBIORETENTION" Then
-    Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C7")
+    Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C7")
     'txtOHeight.Value = BMPindxrange.Offset(0, 1)
     'txtODiam.Value = BMPindxrange.Offset(0, 2)
          Set OB1 = BMPindxrange.Offset(0, 3)
@@ -192,7 +192,7 @@ Dim OB2 As Variant
     
     End If
     If cboBMPType = "INFILTRATIONBASIN" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C8")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C8")
          txtOHeight.Value = BMPindxrange.Offset(0, 1)
          txtODiam.Value = BMPindxrange.Offset(0, 2)
             Set OB1 = BMPindxrange.Offset(0, 3)
@@ -228,7 +228,7 @@ Dim OB2 As Variant
     End If
     
      If cboBMPType = "INFILTRATIONCHAMBER" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C9")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C9")
         txtOHeight.Value = BMPindxrange.Offset(0, 1)
         txtODiam.Value = BMPindxrange.Offset(0, 2)
     
@@ -267,7 +267,7 @@ Dim OB2 As Variant
     End If
     
     If cboBMPType = "INFILTRATIONTRENCH" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C10")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C10")
         txtOHeight.Value = BMPindxrange.Offset(0, 1)
         txtODiam.Value = BMPindxrange.Offset(0, 2)
         Set OB1 = BMPindxrange.Offset(0, 3)
@@ -304,7 +304,7 @@ Dim OB2 As Variant
     End If
        
      If cboBMPType = "POROUSPAVEMENT" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C11")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C11")
         txtOHeight.Value = BMPindxrange.Offset(0, 1)
         txtODiam.Value = BMPindxrange.Offset(0, 2)
         Set OB1 = BMPindxrange.Offset(0, 3)
@@ -340,7 +340,7 @@ Dim OB2 As Variant
     End If
        
     If cboBMPType = "SANDFILTER" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C12")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C12")
         txtOHeight.Value = BMPindxrange.Offset(0, 1)
         txtODiam.Value = BMPindxrange.Offset(0, 2)
         Set OB1 = BMPindxrange.Offset(0, 3)
@@ -376,7 +376,7 @@ Dim OB2 As Variant
     End If
     
     If cboBMPType = "SUBSURFACEGRAVELWETLAND" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C13")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C13")
          txtOHeight.Value = BMPindxrange.Offset(0, 1)
          txtODiam.Value = BMPindxrange.Offset(0, 2)
          Set OB1 = BMPindxrange.Offset(0, 3)
@@ -412,7 +412,7 @@ Dim OB2 As Variant
     End If
     
     If cboBMPType = "WETPOND" Then
-        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C14")
+        Set BMPindxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C14")
          txtOHeight.Value = BMPindxrange.Offset(0, 1)
          txtODiam.Value = BMPindxrange.Offset(0, 2)
             Set OB1 = BMPindxrange.Offset(0, 3)
@@ -449,14 +449,14 @@ Dim OB2 As Variant
      
 End Sub
 Private Sub CAF_Change()
-Dim costindx As range
-Dim BMPMatchRange As range
+Dim costindx As Range
+Dim BMPMatchRange As Range
 
-Set costindx = ThisWorkbook.Worksheets("BMPDefaultCost").range("D5")
-Set BMPMatchRange = ThisWorkbook.Worksheets("BMPDefaultCost").range("C4")
+Set costindx = ThisWorkbook.Worksheets("BMPDefaultCost").Range("D5")
+Set BMPMatchRange = ThisWorkbook.Worksheets("BMPDefaultCost").Range("C4")
        Do While BMPMatchRange.Value <> ""
             If cboBMPType.Value = "POROUS PAVEMENT" Then
-                Set BMPMatchRange = ThisWorkbook.Worksheets("BMPDefaultCost").range("C11")
+                Set BMPMatchRange = ThisWorkbook.Worksheets("BMPDefaultCost").Range("C11")
                 txtTotalVolumeCost.Value = BMPMatchRange.Offset(0, 1).Value * CAF.Value
                 AnnualMaintenance.Value = BMPMatchRange.Offset(0, 2).Value
                 Exit Sub
@@ -485,11 +485,11 @@ frmEquationParameters.Show
 End Sub
 
 Private Sub cboPorousPavement_Change()
-Dim costindx As range
-Dim hourindx As range
+Dim costindx As Range
+Dim hourindx As Range
 
-Set costindx = ThisWorkbook.Worksheets("BMPDefaultCost").range("D5")
-Set hourindx = ThisWorkbook.Worksheets("BMPDefaultCost").range("E5")
+Set costindx = ThisWorkbook.Worksheets("BMPDefaultCost").Range("D5")
+Set hourindx = ThisWorkbook.Worksheets("BMPDefaultCost").Range("E5")
 
 If CAF.Value = "" Then
     CAF.Value = 1
@@ -506,7 +506,7 @@ End If
 End Sub
 
 Private Sub cmdDefaultPollutants_Click()
-Dim indxrange As range
+Dim indxrange As Range
 Dim i As Integer
 Dim j As Integer
 Dim k As Integer
@@ -518,7 +518,7 @@ Dim r As Integer
 
 
 
-Set indxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C4")
+Set indxrange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C4")
 Do While indxrange.Value <> ""
     If cboBMPType.Text = indxrange Then
         Exit Do
@@ -903,17 +903,17 @@ Private Sub cboBMPType_Change()
     
     ' Set BMP type parameters and change screens.
     ' Add new BMPs for Region 1
-Dim costindx As range
-Dim hourindx As range
+Dim costindx As Range
+Dim hourindx As Range
 Dim x As Integer
-Dim PollutantOrderRange As range
-Dim BMPMatchRange As range
+Dim PollutantOrderRange As Range
+Dim BMPMatchRange As Range
 
 
     Select Case cboBMPType.Value
         
         Case "BIORETENTION", "DRYPOND", "WETPOND", "INFILTRATIONTRENCH", "SANDFILTER", "INFILTRATIONBASIN"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -951,7 +951,7 @@ Dim BMPMatchRange As range
             
 
         Case "RAINBARREL"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = True
@@ -989,7 +989,7 @@ Dim BMPMatchRange As range
             
 
         Case "CISTERN"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = True
@@ -1066,7 +1066,7 @@ Dim BMPMatchRange As range
         '
 
         Case "POROUSPAVEMENT"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -1107,7 +1107,7 @@ Dim BMPMatchRange As range
             
 
         Case "HYDRODYNAMICSEPERATOR"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             imgClassARainBarrel.Visible = False
@@ -1157,7 +1157,7 @@ Dim BMPMatchRange As range
         ' Yi Xu, 2015
         
         Case "SUBSURFACEGRAVELWETLAND"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
@@ -1201,7 +1201,7 @@ Dim BMPMatchRange As range
             
             
         Case "ENHANCEDBIORETENTION"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
@@ -1242,7 +1242,7 @@ Dim BMPMatchRange As range
             
             
         Case "INFILTRATIONCHAMBER"
-            bmpType = "A"
+            BMPTYPE = "A"
             fmClassA.Visible = True
             fmClassB.Visible = False
             
@@ -1614,8 +1614,8 @@ End Sub
 
 Private Sub cboSub_Change()
 
-    Dim bmpRange As range
-    Dim subRange As range
+    Dim bmpRange As Range
+    Dim subRange As Range
     Dim x As Integer
     
     ' Add the selected subbasin.
@@ -1655,11 +1655,11 @@ Private Sub cboSub_Change()
     
 End Sub
 
-Private Sub Write_c725_SurfaceDimensions(newID As String, indxrange As range)
+Private Sub Write_c725_SurfaceDimensions(newID As String, indxrange As Range)
 
     ' Write general BMP information.
     ' NOTE: Not specifically used in Card 725.
-    Dim ETRange As range
+    Dim ETRange As Range
     
     'indxRange.Value = newID
     indxrange.Value = txtBMPName.Value
@@ -1711,7 +1711,7 @@ Private Sub Write_c725_SurfaceDimensions(newID As String, indxrange As range)
     'Yi Xu
     
     
-    Set ETRange = ThisWorkbook.Worksheets("BMPDefaultParameters").range("C4")
+    Set ETRange = ThisWorkbook.Worksheets("BMPDefaultParameters").Range("C4")
     Do While ETRange <> ""
         If ETRange.Value = cboBMPType.Value Then
             indxrange.Offset(0, 12).Value = ETRange.Offset(0, 25)
@@ -1728,10 +1728,10 @@ Private Sub Write_c725_SurfaceDimensions(newID As String, indxrange As range)
 
 End Sub
 
-Private Sub Write_c725a_SurfaceDimensions(newID As String, indxrange As range)
+Private Sub Write_c725a_SurfaceDimensions(newID As String, indxrange As Range)
 
 Dim Num_Landuses As Integer
-Dim indxlutext, indxluc725a As range
+Dim indxlutext, indxluc725a As Range
 Dim x As Integer
 Dim lutext As String
     ' Write general BMP land use information.
@@ -1751,7 +1751,7 @@ Dim lutext As String
     'indxrange.Offset(0, 3).Value = txtDrainageArea.Value
    ' indxrange.Offset(0, 3).Value = BMP_Drainage_Area
     
-    Num_Landuses = ThisWorkbook.Worksheets("Watershed Sketch").range("NumLanduses")
+    Num_Landuses = ThisWorkbook.Worksheets("Watershed Sketch").Range("NumLanduses")
     Dim i As Integer
     For i = 0 To (Num_Landuses - 1)
         indxrange.Offset(0, i + 4).Value = 0
@@ -1759,8 +1759,8 @@ Dim lutext As String
     
      
         
-        Set indxlutext = ThisWorkbook.Worksheets("SubbasinInput").range("F4")
-        Set indxluc725a = ThisWorkbook.Worksheets("c725a").range("F4")
+        Set indxlutext = ThisWorkbook.Worksheets("SubbasinInput").Range("F4")
+        Set indxluc725a = ThisWorkbook.Worksheets("c725a").Range("F4")
     
     
         If Num_Landuses > 0 Then
@@ -1777,7 +1777,7 @@ Dim lutext As String
     
 End Sub
 
-Private Sub Write_c730_ReleaseControl(newID As String, indxrange As range)
+Private Sub Write_c730_ReleaseControl(newID As String, indxrange As Range)
 
 Dim y As Integer
 
@@ -1790,7 +1790,7 @@ Dim y As Integer
     
 End Sub
 
-Private Sub Write_c732_OrificeControl(newID As String, indxrange As range)
+Private Sub Write_c732_OrificeControl(newID As String, indxrange As Range)
 
     ' Write BMP ID.
     indxrange.Value = newID
@@ -1826,7 +1826,7 @@ Private Sub Write_c732_OrificeControl(newID As String, indxrange As range)
     
 End Sub
 
-Private Sub Write_c733_WeirControl(newID As String, indxrange As range)
+Private Sub Write_c733_WeirControl(newID As String, indxrange As Range)
     
     ' Write BMP ID.
     indxrange.Value = newID
@@ -1866,7 +1866,7 @@ Private Sub Write_c733_WeirControl(newID As String, indxrange As range)
 
 End Sub
 
-Public Sub Write_c740_SubstrateProperties(newID As String, indxrange As range)
+Public Sub Write_c740_SubstrateProperties(newID As String, indxrange As Range)
 
     indxrange.Value = newID
     
@@ -1933,7 +1933,7 @@ Public Sub Write_c740_SubstrateProperties(newID As String, indxrange As range)
 
 End Sub
 
-Private Sub Write_c745_GrowthIndex(newID As String, indxrange As range)
+Private Sub Write_c745_GrowthIndex(newID As String, indxrange As Range)
 
     indxrange.Value = newID
     indxrange.Offset(0, 1).Value = 0.2
@@ -1951,7 +1951,7 @@ Private Sub Write_c745_GrowthIndex(newID As String, indxrange As range)
 
 End Sub
 
-Private Sub Write_c747_SoilInitialization(newID As String, indxrange As range)
+Private Sub Write_c747_SoilInitialization(newID As String, indxrange As Range)
     
     indxrange.Value = newID
     indxrange.Offset(0, 1).Value = 0
@@ -1960,7 +1960,7 @@ Private Sub Write_c747_SoilInitialization(newID As String, indxrange As range)
     
 End Sub
 
-Private Sub Write_c765_DecayRate(newID As String, indxrange As range)
+Private Sub Write_c765_DecayRate(newID As String, indxrange As Range)
 
     'indxRange.Offset(0, 1).Value = txtTSSDecay.Value
     'indxRange.Offset(0, 2).Value = txtBODDecay.Value
@@ -1977,7 +1977,7 @@ Private Sub Write_c765_DecayRate(newID As String, indxrange As range)
     
 End Sub
 
-Private Sub Write_c766_ConstantRate(newID As String, indxrange As range)
+Private Sub Write_c766_ConstantRate(newID As String, indxrange As Range)
 
 Dim x As Integer
     indxrange.Value = newID
@@ -1986,7 +1986,7 @@ Dim x As Integer
     Next x
     
 End Sub
-Private Sub Write_c767_ConstantC(newID As String, indxrange As range)
+Private Sub Write_c767_ConstantC(newID As String, indxrange As Range)
     indxrange.Value = newID
     Dim x As Integer
     
@@ -1995,7 +1995,7 @@ Private Sub Write_c767_ConstantC(newID As String, indxrange As range)
     Next x
 End Sub
 
-Private Sub Write_c770_RemovalRate(newID As String, indxrange As range)
+Private Sub Write_c770_RemovalRate(newID As String, indxrange As Range)
 
 Dim x As Integer
 
@@ -2014,7 +2014,7 @@ End Sub
 
 
 
-Private Sub Write_c810_DecisionVariables(newID As String, indxrange As range)
+Private Sub Write_c810_DecisionVariables(newID As String, indxrange As Range)
 
     indxrange.Value = newID
     
@@ -2044,7 +2044,7 @@ Private Sub Write_c810_DecisionVariables(newID As String, indxrange As range)
     
 End Sub
 
-Private Sub Write_c805_Objectives(newID As String, indxrange As range)
+Private Sub Write_c805_Objectives(newID As String, indxrange As Range)
 
     indxrange.Value = newID
     indxrange.Offset(0, 1).Value = txtLinearCost.Value
@@ -2095,7 +2095,7 @@ Private Sub Write_c805_Objectives(newID As String, indxrange As range)
     
 End Sub
 
-Private Sub Read_c725_SurfaceDimensions(indxrange As range)
+Private Sub Read_c725_SurfaceDimensions(indxrange As Range)
 
     ' Get BMP ID.
     newID = indxrange.Value
@@ -2122,7 +2122,7 @@ Private Sub Read_c725_SurfaceDimensions(indxrange As range)
 
 End Sub
 
-Private Sub Read_c730_ReleaseControl(indxrange As range)
+Private Sub Read_c730_ReleaseControl(indxrange As Range)
 
     ' Read hourly cistern per capita release values.
     Dim x As Integer
@@ -2132,7 +2132,7 @@ Private Sub Read_c730_ReleaseControl(indxrange As range)
     
 End Sub
 
-Private Sub Read_c732_OrificeControl(indxrange As range)
+Private Sub Read_c732_OrificeControl(indxrange As Range)
 
     ' Read dimensional information.
     Select Case CDbl(indxrange.Offset(0, 5).Value)
@@ -2147,7 +2147,7 @@ Private Sub Read_c732_OrificeControl(indxrange As range)
     
 End Sub
 
-Private Sub Read_c733_WeirControl(indxrange As range)
+Private Sub Read_c733_WeirControl(indxrange As Range)
     
     ' Read weir dimensional information.
     
@@ -2172,7 +2172,7 @@ Private Sub Read_c733_WeirControl(indxrange As range)
 
 End Sub
 
-Private Sub Read_c740_SubstrateProperties(indxrange As range)
+Private Sub Read_c740_SubstrateProperties(indxrange As Range)
 
     ' Infiltration method hard-coded as Holton=2.
     indxrange.Offset(0, 1).Value = 2
@@ -2212,7 +2212,7 @@ Private Sub Read_c740_SubstrateProperties(indxrange As range)
 
 End Sub
 
-Private Sub Read_c745_GrowthIndex(indxrange As range)
+Private Sub Read_c745_GrowthIndex(indxrange As Range)
 
     txtGrowthJan.Value = indxrange.Offset(0, 1).Value
     txtGrowthFeb.Value = indxrange.Offset(0, 2).Value
@@ -2229,14 +2229,14 @@ Private Sub Read_c745_GrowthIndex(indxrange As range)
 
 End Sub
 
-Private Sub Read_c765_DecayRate(indxrange As range)
+Private Sub Read_c765_DecayRate(indxrange As Range)
 
-    Dim C As range
+    Dim C As Range
     Dim x As Integer
     
     ' Set range starting position.
     Set indxrange = indxrange.Offset(0, 1)
-    Set indxrange = range(indxrange, indxrange.End(xlToRight))
+    Set indxrange = Range(indxrange, indxrange.End(xlToRight))
     
     ' Resize the array.
     ReDim DecayRates(indxrange.Cells.Count - 1)
@@ -2253,16 +2253,16 @@ Private Sub Read_c765_DecayRate(indxrange As range)
 
 End Sub
 
-Private Sub Read_c766_ConstantRate(indxrange As range)
+Private Sub Read_c766_ConstantRate(indxrange As Range)
     
-    Dim C As range
+    Dim C As Range
     Dim x As Integer
     
 
     
     ' Set range starting position
     Set indxrange = indxrange.Offset(0, 1)
-    Set indxrange = range(indxrange, indxrange.End(xlToRight))
+    Set indxrange = Range(indxrange, indxrange.End(xlToRight))
     
     ' Resize the array
     ReDim ConstantRates(indxrange.Cells.Count - 1)
@@ -2279,14 +2279,14 @@ Private Sub Read_c766_ConstantRate(indxrange As range)
     
 End Sub
 
-Private Sub Read_c767_ConstantC(indxrange As range)
+Private Sub Read_c767_ConstantC(indxrange As Range)
     
-    Dim C As range
+    Dim C As Range
     Dim x As Integer
     
     ' set range starting position
     Set indxrange = indxrange.Offset(0, 1)
-    Set indxrange = range(indxrange, indxrange.End(xlToRight))
+    Set indxrange = Range(indxrange, indxrange.End(xlToRight))
     
     ' Resize the array
     ReDim ConstantCs(indxrange.Cells.Count - 1)
@@ -2302,14 +2302,14 @@ Private Sub Read_c767_ConstantC(indxrange As range)
     
 End Sub
 
-Private Sub Read_c770_RemovalRate(indxrange As range)
+Private Sub Read_c770_RemovalRate(indxrange As Range)
   
-    Dim C As range
+    Dim C As Range
     Dim x As Integer
   
     ' Set range starting position.
     Set indxrange = indxrange.Offset(0, 1)
-    Set indxrange = range(indxrange, indxrange.End(xlToRight))
+    Set indxrange = Range(indxrange, indxrange.End(xlToRight))
     
     ' Resize the array.
     ReDim RemovalRates(indxrange.Cells.Count - 1)
@@ -2325,7 +2325,7 @@ Private Sub Read_c770_RemovalRate(indxrange As range)
     'txtRemovalRate.Text = 0
 End Sub
 
-Private Sub Read_c810_DecisionVariables(indxrange As range)
+Private Sub Read_c810_DecisionVariables(indxrange As Range)
 
     ' Read in the length constraints.
     LengthConstraint(0) = indxrange.Offset(0, 1).Value
@@ -2353,7 +2353,7 @@ Private Sub Read_c810_DecisionVariables(indxrange As range)
 
 End Sub
 
-Private Sub Read_c805_Objectives(indxrange As range)
+Private Sub Read_c805_Objectives(indxrange As Range)
 
     txtLinearCost.Value = indxrange.Offset(0, 1).Value
     txtBMPLength.Value = indxrange.Offset(0, 2).Value
@@ -2474,14 +2474,14 @@ End Sub
 
 Private Sub PopulateDefault_c765()
 
-    Dim C As range
+    Dim C As Range
     Dim indx As Integer
-    Dim indxrange As range
+    Dim indxrange As Range
     
     ' Build the range of pollutants.
-    Set indxrange = ThisWorkbook.Worksheets("c705").range("C5")
+    Set indxrange = ThisWorkbook.Worksheets("c705").Range("C5")
     If indxrange.Offset(1, 0).Value <> "" Then
-        Set indxrange = range(indxrange, indxrange.End(xlDown))
+        Set indxrange = Range(indxrange, indxrange.End(xlDown))
     End If
     
     ' Resize the array of decay rates.
@@ -2501,14 +2501,14 @@ End Sub
 
 Private Sub PopulateDefault_c766()
     
-    Dim C As range
+    Dim C As Range
     Dim indx As Integer
-    Dim indxrange As range
+    Dim indxrange As Range
     
     ' Build the range of pollutants.
-    Set indxrange = ThisWorkbook.Worksheets("c705").range("C5")
+    Set indxrange = ThisWorkbook.Worksheets("c705").Range("C5")
     If indxrange.Offset(1, 0).Value <> "" Then
-        Set indxrange = range(indxrange, indxrange.End(xlDown))
+        Set indxrange = Range(indxrange, indxrange.End(xlDown))
     End If
     
     ' Resize the array of decay rates.
@@ -2526,14 +2526,14 @@ Private Sub PopulateDefault_c766()
 End Sub
 
 Private Sub PopulateDefault_c767()
-    Dim C As range
+    Dim C As Range
     Dim indx As Integer
-    Dim indxrange As range
+    Dim indxrange As Range
     
     'Build the range of pollutants.
-    Set indxrange = ThisWorkbook.Worksheets("c705").range("C5")
+    Set indxrange = ThisWorkbook.Worksheets("c705").Range("C5")
     If indxrange.Offset(1, 0).Value <> "" Then
-        Set indxrange = range(indxrange, indxrange.End(xlDown))
+        Set indxrange = Range(indxrange, indxrange.End(xlDown))
     End If
     
     ' Resize the array of constant rate C
@@ -2555,14 +2555,14 @@ End Sub
 
 Private Sub PopulateDefault_c770()
 
-    Dim C As range
+    Dim C As Range
     Dim indx As Integer
-    Dim indxrange As range
+    Dim indxrange As Range
     
     ' Build the range of pollutants.
-    Set indxrange = ThisWorkbook.Worksheets("c705").range("C5")
+    Set indxrange = ThisWorkbook.Worksheets("c705").Range("C5")
     If indxrange.Offset(1, 0).Value <> "" Then
-        Set indxrange = range(indxrange, indxrange.End(xlDown))
+        Set indxrange = Range(indxrange, indxrange.End(xlDown))
     End If
     
     ' Resize the array of removal rates.
@@ -2659,17 +2659,17 @@ End Sub
 
 Private Sub UserForm_Initialize()
 
-Dim indxrange As range
+Dim indxrange As Range
 
 
     Call PopulateBMPTypes
-    Set indxrange = ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").range("C10")
-    Call Read_c725(ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").range(indxrange.Address))
+    Set indxrange = ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").Range("C10")
+    Call Read_c725(ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").Range(indxrange.Address))
     
 End Sub
 
 
-Private Sub Read_c725(indxrange As range)
+Private Sub Read_c725(indxrange As Range)
 
     ' Get BMP ID.
     newID = indxrange.Value
@@ -2693,16 +2693,16 @@ Private Sub Read_c725(indxrange As range)
 End Sub
 
 Private Sub cmdSave_Click()
-Dim indxrange As range
-    Set indxrange = ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").range("C10")
-    Call Write_c725(ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").range(indxrange.Address))
+Dim indxrange As Range
+    Set indxrange = ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").Range("C10")
+    Call Write_c725(ThisWorkbook.Worksheets("3 - BMP Installation Data Entry").Range(indxrange.Address))
    
         Unload Me
 
 
 End Sub
 
-Private Sub Write_c725(indxrange As range)
+Private Sub Write_c725(indxrange As Range)
 
     ' Write general BMP information.
     ' NOTE: Not specifically used in Card 725.

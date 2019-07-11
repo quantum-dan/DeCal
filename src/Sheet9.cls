@@ -18,25 +18,3 @@ Private Sub ImportCalData_Click()
     ExportChart
     Save_final
 End Sub
-
-Private Sub NextButton_Click()
-    Dim cell As range
-    Set cell = range("T76")
-    
-    If (cell.Value < 10) Then
-        cell.Value = cell.Value + 1
-    Else
-        MsgBox ("Last fit reached.")
-    End If
-End Sub
-
-Private Sub PrevButton_Click()
-    Dim cell As range
-    Set cell = range("T76")
-    
-    If (cell.Value > 1) Then
-        cell.Value = cell.Value - 1
-    Else
-        MsgBox ("First fit reached.")
-    End If
-End Sub

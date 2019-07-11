@@ -1,6 +1,4 @@
 Function Write_Out_R_Inputs()
-Dim firstrow As Integer
-firstrow = 14
 
 '---------------------------------------------------------------------------------------------
 ' ABOUT:
@@ -42,21 +40,21 @@ Set ppt_fsobj = CreateObject("Scripting.FileSystemObject")
 
 ' Find last rows with data
 With Sheets("2 - Time Series Data Entry")
-    v_in_LR = .Cells(Rows.Count, "B").End(xlUp).row
-    dur_LR = .Cells(Rows.Count, "C").End(xlUp).row
-    c_in_LR = .Cells(Rows.Count, "E").End(xlUp).row
-    c_out_LR = .Cells(Rows.Count, "F").End(xlUp).row
-    ppt_dt_LR = .Cells(Rows.Count, "H").End(xlUp).row
-    ppt_LR = .Cells(Rows.Count, "I").End(xlUp).row
+    v_in_LR = .Cells(Rows.Count, "B").End(xlUp).Row
+    dur_LR = .Cells(Rows.Count, "C").End(xlUp).Row
+    c_in_LR = .Cells(Rows.Count, "E").End(xlUp).Row
+    c_out_LR = .Cells(Rows.Count, "F").End(xlUp).Row
+    ppt_dt_LR = .Cells(Rows.Count, "H").End(xlUp).Row
+    ppt_LR = .Cells(Rows.Count, "I").End(xlUp).Row
 End With
 
 ' Read in to last row
-v_in = Sheets("2 - Time Series Data Entry").range("B" & firstrow & ":B" & v_in_LR).Value
-dur = Sheets("2 - Time Series Data Entry").range("C" & firstrow & ":C" & dur_LR).Value
-c_in = Sheets("2 - Time Series Data Entry").range("E" & firstrow & ":E" & c_in_LR).Value
-c_out = Sheets("2 - Time Series Data Entry").range("F" & firstrow & ":F2" & c_out_LR).Value
-ppt_dt = Sheets("2 - Time Series Data Entry").range("H" & firstrow & ":H" & ppt_dt_LR).Value
-ppt = Sheets("2 - Time Series Data Entry").range("I" & firstrow & ":I" & ppt_LR).Value
+v_in = Sheets("2 - Time Series Data Entry").Range("B12:B" & v_in_LR).Value
+dur = Sheets("2 - Time Series Data Entry").Range("C12:C" & dur_LR).Value
+c_in = Sheets("2 - Time Series Data Entry").Range("E12:E" & c_in_LR).Value
+c_out = Sheets("2 - Time Series Data Entry").Range("F12:F2" & c_out_LR).Value
+ppt_dt = Sheets("2 - Time Series Data Entry").Range("H12:H" & ppt_dt_LR).Value
+ppt = Sheets("2 - Time Series Data Entry").Range("I12:I" & ppt_LR).Value
 
 
 '--------------------

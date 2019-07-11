@@ -13,17 +13,17 @@ Lresult = FileDateTime(Sustain_file & "LU_Input_TS_5min.prn")
 t = Now()
 
 
-Worksheets("5 - Check Input Files").range("D6").Value = "File Name"
-Worksheets("5 - Check Input Files").range("E6").Value = "Date/ Time Modified"
-Worksheets("5 - Check Input Files").range("F6").Value = "File Size (Bites)"
-Worksheets("5 - Check Input Files").range("D7").Value = "Sustain Files Updated"
-Worksheets("5 - Check Input Files").range("E7").Value = Lresult
-Worksheets("5 - Check Input Files").range("F7").Value = FileLen(size_s)
-Worksheets("5 - Check Input Files").range("D8").Value = "R Files Updated"
-Worksheets("5 - Check Input Files").range("E8").Value = Rresult
-Worksheets("5 - Check Input Files").range("F8").Value = FileLen(size_r)
-Worksheets("5 - Check Input Files").range("D4").Value = "Current Time"
-Worksheets("5 - Check Input Files").range("E4").Value = t
+Worksheets("5 - Check Input Files").Range("D6").Value = "File Name"
+Worksheets("5 - Check Input Files").Range("E6").Value = "Date/ Time Modified"
+Worksheets("5 - Check Input Files").Range("F6").Value = "File Size (Bites)"
+Worksheets("5 - Check Input Files").Range("D7").Value = "Sustain Files Updated"
+Worksheets("5 - Check Input Files").Range("E7").Value = Lresult
+Worksheets("5 - Check Input Files").Range("F7").Value = FileLen(size_s)
+Worksheets("5 - Check Input Files").Range("D8").Value = "R Files Updated"
+Worksheets("5 - Check Input Files").Range("E8").Value = Rresult
+Worksheets("5 - Check Input Files").Range("F8").Value = FileLen(size_r)
+Worksheets("5 - Check Input Files").Range("D4").Value = "Current Time"
+Worksheets("5 - Check Input Files").Range("E4").Value = t
 
 
     
