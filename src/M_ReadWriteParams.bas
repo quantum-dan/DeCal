@@ -1,5 +1,5 @@
-' Order of the parameters in params.csv in format Sheet, Cell
-Public Const orderLen = 12
+' Order of the parameters in settings.csv in format Sheet, Cell
+Public Const orderLen = 13
 Function order(i, j) As String
 
     order = Array(Array("4 - Calibration Parameters", "C5"), _
@@ -14,7 +14,8 @@ Function order(i, j) As String
                     Array("4 - Calibration Parameters", "D21"), _
                     Array("2 - Time Series Data Entry", "C4"), _
                     Array("2 - Time Series Data Entry", "G4"), _
-                    Array("2 - Time Series Data Entry", "I4"))(i)(j)
+                    Array("2 - Time Series Data Entry", "I4"), _
+                    Array("2 - Time Series Data Entry", "C13"))(i)(j)
                     
 End Function
 

@@ -28,6 +28,7 @@ wdir = as.character(data_params_wdir[1,1])
 wdir <- gsub("\\\\","\\/", wdir)
 data_params = read.csv(csv_path,header = T)
 save_folder<-as.character(data_params_wdir[7,1])
+use_peak_flow <- as.numeric(as.character(data_params_wdir[8,1])) == 2 # 2 -> peak flow, 1 -> duration
 main_save_path<-file.path(wdir,save_folder)
 plot_save_path<-paste(main_save_path,"/plots/",sep="")
 data_save_path<-paste(main_save_path,"/data/",sep="")
@@ -266,6 +267,13 @@ graphics.off()
 # READ IN DURATIONS
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 dur <- read.csv(file=paste(Rinput_dir, "dur.csv", sep=""), header=T)
+# If using peak flow (instead of duration):
+# Single-event distribution is assumed to be isoceles triangle, so
+# Volume = Peak * Duration / 2 -> Duration = 2 * Volume / Peak
+# Correct duration to that, if necessary
+if (use_peak_flow) {
+  dur$dur.min <- 2 * vol.obs$v_in.cf / dur$dur.min
+}
 
 
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
