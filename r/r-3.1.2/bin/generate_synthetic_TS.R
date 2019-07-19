@@ -272,7 +272,7 @@ dur <- read.csv(file=paste(Rinput_dir, "dur.csv", sep=""), header=T)
 # Volume = Peak * Duration / 2 -> Duration = 2 * Volume / Peak
 # Correct duration to that, if necessary
 if (use_peak_flow) {
-  dur$dur.min <- 2 * vol.obs$v_in.cf / dur$dur.min
+  dur$dur.min <- 2 * vol.obs$v_in.cf / (dur$dur.min * 60) # Convert cfs to cf/min (* 60)
 }
 
 

@@ -134,6 +134,7 @@ k <- 2
 # These values of 0 should be pretty easy to find, based on the
 # way the input time series was generated
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
 for(i in seq(1:(length(out_ts$TotalInflow_cfs)-1))){
      x <- i+1
      
@@ -183,6 +184,8 @@ for(i in seq(1:(length(out_ts$TotalOutflow_cfs)-1))){
 # remove any events where two inflow events bleed into each other (i.e., if there are two inflow event start
 # timestamps in a row, with no outflow event stop in between)
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
 outflow_start_stop <- outflow_start_stop[order(outflow_start_stop$rownum),]
 outflow_start_stop$remove <- 0
 
@@ -194,10 +197,10 @@ for(i in seq(1:(length(outflow_start_stop$flag)-1))){
           # If so, flag the whole "start"-"start"-"stop" sequence for removal
           outflow_start_stop$remove[i] = 1 
           outflow_start_stop$remove[i+1] = 1
-          
+
           # Be sure not to flag a row that doesn't exist...
           if(i < (length(outflow_start_stop$flag)-1)) {
-               outflow_start_stop$remove[i+2] = 1 
+               outflow_start_stop$remove[i+2] = 1
           }
      }
 }
@@ -369,6 +372,12 @@ if( dim(wqpars)[1] == 1 ) {
 #RMSE
 cout.emc.mod.out <- cout.emc.mod.out[order(cout.emc.mod.out$rmse.rank), ]
 firstrow <- cout.emc.mod.out[1,]
+# This doesn't work if n.outflows =/= the length of firstrow - 5
+# The length of firstrow should originally be 5 + number of trials, I believe
+# So for this next line to work it must be n.outflows == num.sims, but how is that assured?
+# n.outflows <- length(outflow_start_stop$flag)/2 is how it is defined
+# num.sims <- as.numeric(as.character(data_params[1,1]))
+# I don't see how these could line up except by sheer chance.  If otherwise, it probably happens in generate_synthetic_TS, perhaps?
 firstrow[1,] <- c("CumPr", rep(NA,4), c(1:n.outflows)/n.outflows )
 cout.emc.mod.out <- rbind(firstrow, cout.emc.mod.out)
 
