@@ -13,12 +13,17 @@
 #    3 - Observed event mean concentrations in BMP outflow
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
+
+DEBUG <- FALSE
+
+
 wd = getwd()
 args <- commandArgs(TRUE)
 #wd = '/Users/cross/Desktop/Water_modeling_copy/R/R-3.1.2/bin'
-csv_path = file.path(args[1],"/params.csv")
-data_params_wdir = read.csv(csv_path,header = F)
-wdir = as.character(data_params_wdir[1,1])
+csv_path <- if(!DEBUG) file.path(args[1],"/params.csv") else
+  file.path("V:", "iDST_DeCal_Data", "Completed_Ongoing_Calibrations", "B512WD-FC", "data", "params.csv")
+data_params_wdir <- read.csv(csv_path,header = F)
+wdir <- as.character(data_params_wdir[1,1])
 wdir <- gsub("\\\\","\\/", wdir)
 data_params = read.csv(csv_path,header = T)
 save_folder<-as.character(data_params_wdir[7,1])
@@ -30,7 +35,6 @@ data_save_path<-paste(data_save_path,"/data/",sep="")
 #wdir <- as.character(commandArgs(trailingOnly=T)[1])
 
 
-
 #############################################################
 # PARSE WORKING DIRECTORY [FOR PCs] AND MODEL PARAMETERS
 # FROM INPUT ARG 
@@ -39,9 +43,12 @@ data_save_path<-paste(data_save_path,"/data/",sep="")
 
 
 # SINK MESSAGES
-sink(paste(main_save_path, "/R_ParameterCalibration_Messages.txt", sep=""),append=F,type="output")
-sinkfile <- file(paste(main_save_path, "/R_ParameterCalibration_Errors.txt", sep=""), open="wt")
-sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
+if (!DEBUG) {
+  # Only sink stuff if not interactively debugging
+  sink(paste(main_save_path, "/R_ParameterCalibration_Messages.txt", sep=""),append=F,type="output")
+  sinkfile <- file(paste(main_save_path, "/R_ParameterCalibration_Errors.txt", sep=""), open="wt")
+  sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
+}
 
 
 
@@ -353,7 +360,7 @@ stats$K_rmse_m <- stats$mse
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 # First - Do the Modeled COUT
-cout.sort <- apply(cout.emc.mod,2,sort,decreasing=F)
+cout.sort <- apply(cout.emc.mod,1,sort,decreasing=F)
 
 # Create a data frame to write out
 if( dim(wqpars)[1] == 1 ) {
@@ -377,14 +384,25 @@ firstrow <- cout.emc.mod.out[1,]
 # So for this next line to work it must be n.outflows == num.sims, but how is that assured?
 # n.outflows <- length(outflow_start_stop$flag)/2 is how it is defined
 # num.sims <- as.numeric(as.character(data_params[1,1]))
-# I don't see how these could line up except by sheer chance.  If otherwise, it probably happens in generate_synthetic_TS, perhaps?
-firstrow[1,] <- c("CumPr", rep(NA,4), c(1:n.outflows)/n.outflows )
+# need num.sims == n.outflows
+# How do these normally end up lining up?
+# I think the outflow threshold needs to be high enough that all of the
+# separate inflow events count as separate outflow events.
+# The problem in this case (Houston wetland) is that some of the inter-event flows are higher
+# than the peak flows for other events.
+# So then the question is: can we do away with this n.outflows business?  What does it actually do?
+# It has something to do with the cumulative probability--I think we may actually want n_sims
+# here and not n.outflows.  Let's see what happens if we do that.
+# Old version: replace num.sims with n.outflows
+firstrow[1,] <- c("CumPr", rep(NA,4), c(1:num.sims)/num.sims )
+
+
 cout.emc.mod.out <- rbind(firstrow, cout.emc.mod.out)
 
 #MSE
 cout.emc.mod.out_mse <- cout.emc.mod.out_mse[order(cout.emc.mod.out_mse$mse.rank), ]
 firstrow_m <- cout.emc.mod.out_mse[1,]
-firstrow_m[1,] <- c("CumPr", rep(NA,4), c(1:n.outflows)/n.outflows )
+firstrow_m[1,] <- c("CumPr", rep(NA,4), c(1:num.sims)/num.sims )
 cout.emc.mod.out_mse <- rbind(firstrow_m, cout.emc.mod.out_mse)
 
 

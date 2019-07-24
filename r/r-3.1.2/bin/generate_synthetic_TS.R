@@ -19,10 +19,16 @@
 # PARSE WORKING DIRECTORY [FOR PCs] AND MODEL PARAMETERS
 # FROM INPUT ARG 
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+DEBUG = FALSE
+
 wd = getwd()
 args <- commandArgs(TRUE)
 #wd = '/Users/cross/Desktop/Water_modeling_copy/R/R-3.1.2/bin'
-csv_path = file.path(args[1],"/params.csv")
+csv_path <- if (!DEBUG) file.path(args[1],"/params.csv") else file.path("V:", "iDST_DeCal_Data",
+                                                                        "Completed_Ongoing_Calibrations",
+                                                                        "B512WD-FC",
+                                                                        "data",
+                                                                        "params.csv")
 data_params_wdir = read.csv(csv_path,header = F)
 wdir = as.character(data_params_wdir[1,1])
 wdir <- gsub("\\\\","\\/", wdir)
@@ -43,14 +49,18 @@ Routput_dir <- plot_save_path
 SUSTAIN_dir <- paste(wdir, "/SUSTAIN/", sep="")
 SUSTAINinput_dir <- paste(main_save_path, "/SUSTAIN/InputTSFiles/", sep="") 
 
-
-sinkfile <- file(paste(main_save_path, "/R_TSGeneration_Errors.txt", sep=""), open="wt")
-sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
-sink(paste(main_save_path, "/R_TSGeneration_Messages.txt", sep=""), append=F,type="output")
+if (!DEBUG) {
+  # Don't sink if interactively debugging
+  sinkfile <- file(paste(main_save_path, "/R_TSGeneration_Errors.txt", sep=""), open="wt")
+  sink(sinkfile, type="message")    # This will also redirect error output to the file, making things easier to debug
+  sink(paste(main_save_path, "/R_TSGeneration_Messages.txt", sep=""), append=F,type="output")
+}
 
 num = as.numeric(as.character(data_params[3,1]))
 n_sims = as.numeric(as.character(data_params[1,1]))
-min.p = as.numeric(as.character(data_params[2,1]))
+# I think this version of min.p is reading in the wrong number (the outflow threshold).
+# min.p = as.numeric(as.character(data_params[2,1]))
+min.p <- as.numeric(as.character(data_params[4,1]))
 # THIS IS IN HERE NOW FOR DEVELOPMENT
 # Rdir <- "/Users/colinbell/Dropbox/Documents/EPA i-DST/WQ_Utility/R/"
 # Rinput_dir <- paste(Rdir, "R_GeneratedInputFiles/", sep="") 
@@ -201,6 +211,7 @@ p.sub.events$iet_hr <- c(NA, p.sub.events$start[-1]-p.sub.events$end[-length(p.s
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 # Pull out interarrival times
+# Note that this will give odd errors if p.sub.events has only 1 row
 iets <- data.frame(iet_hr=sort(p.sub.events$iet_hr[-1]), rank=c(1:length(p.sub.events$iet_hr[-1])))
 iets$iet_hr <- iets$iet_hr - (time.new/60) # remove built-in minmum time
 iets <- iets[iets$iet_hr > 0, ] # Sometimes there are 0 gaps for some reason, which breaks the fit function
