@@ -21,7 +21,7 @@ wd = getwd()
 args <- commandArgs(TRUE)
 #wd = '/Users/cross/Desktop/Water_modeling_copy/R/R-3.1.2/bin'
 csv_path <- if(!DEBUG) file.path(args[1],"/params.csv") else
-  file.path("V:", "iDST_DeCal_Data", "Completed_Ongoing_Calibrations", "B512WD-FC", "data", "params.csv")
+  file.path("V:", "iDST_DeCal_Data", "Completed_Ongoing_Calibrations", "BCMF-Cu", "data", "params.csv")
 data_params_wdir <- read.csv(csv_path,header = F)
 wdir <- as.character(data_params_wdir[1,1])
 wdir <- gsub("\\\\","\\/", wdir)
@@ -360,13 +360,14 @@ stats$K_rmse_m <- stats$mse
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 # First - Do the Modeled COUT
-cout.sort <- apply(cout.emc.mod,1,sort,decreasing=F)
+cout.sort <- apply(cout.emc.mod,2,sort,decreasing=F)
 
 # Create a data frame to write out
 if( dim(wqpars)[1] == 1 ) {
 
      cout.emc.mod.out <- cbind( stats[,c("ParameterSet","k")], data.frame(NoPar = rep(NA, num.sims)) , stats[,c("ks.test.D.rank", "rmse.rank")] )
      cout.emc.mod.out_mse <- cbind( stats[,c("ParameterSet","k")], data.frame(NoPar = rep(NA, num.sims)) , stats[,c("ks.test.D.rank", "mse.rank")] )
+     # Both of these were originally t()
      cout.emc.mod.out_mse <- cbind( cout.emc.mod.out_mse, t(cout.sort) )
      cout.emc.mod.out <- cbind( cout.emc.mod.out, t(cout.sort) )
 } else {
@@ -394,7 +395,7 @@ firstrow <- cout.emc.mod.out[1,]
 # It has something to do with the cumulative probability--I think we may actually want n_sims
 # here and not n.outflows.  Let's see what happens if we do that.
 # Old version: replace num.sims with n.outflows
-firstrow[1,] <- c("CumPr", rep(NA,4), c(1:num.sims)/num.sims )
+firstrow[1,] <- c("CumPr", rep(NA,4), c(1:n.outflows)/n.outflows )
 
 
 cout.emc.mod.out <- rbind(firstrow, cout.emc.mod.out)
@@ -402,7 +403,7 @@ cout.emc.mod.out <- rbind(firstrow, cout.emc.mod.out)
 #MSE
 cout.emc.mod.out_mse <- cout.emc.mod.out_mse[order(cout.emc.mod.out_mse$mse.rank), ]
 firstrow_m <- cout.emc.mod.out_mse[1,]
-firstrow_m[1,] <- c("CumPr", rep(NA,4), c(1:num.sims)/num.sims )
+firstrow_m[1,] <- c("CumPr", rep(NA,4), c(1:n.outflows)/n.outflows )
 cout.emc.mod.out_mse <- rbind(firstrow_m, cout.emc.mod.out_mse)
 
 
@@ -430,7 +431,7 @@ write.table(cout.obs.out, file=paste(data_save_path, "ObservedCoutEMCs.csv", sep
 save.image(paste(data_save_path, "R_ParameterCal_Workspace.RData", sep=""))
 
 sink(NULL, type="message")
-close(sinkfile)
+if (!DEBUG) close(sinkfile)
 sink(NULL)
 
 
