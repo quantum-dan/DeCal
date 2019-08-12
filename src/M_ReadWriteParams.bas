@@ -15,7 +15,7 @@ Function order(i, j) As String
                     Array("2 - Time Series Data Entry", "C4"), _
                     Array("2 - Time Series Data Entry", "G4"), _
                     Array("2 - Time Series Data Entry", "I4"), _
-                    Array("2 - Time Series Data Entry", "C13"))(i)(j)
+                    Array("2 - Time Series Data Entry", "C7"))(i)(j)
                     
 End Function
 
